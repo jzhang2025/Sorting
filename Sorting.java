@@ -66,29 +66,64 @@ public class Sorting
             return;
         }
         else {
-            int mid = (beg + end / 2);
+            int mid = (beg + end)/2;
             
             mergeSort(beg, mid, arr);
             mergeSort(mid + 1, end, arr);
-            merge(beg, mid, end, int[] arr);
+            merge(beg, mid, end, arr);
         }
     }
     
     public void merge(int beg, int mid, int end, int[] arr)
     {
-        
-        for (int i = beg ; i < mid; i++)
-        {
-            for (int j = mid + 1; j < end; j++)
-            {
-                if (arr[i] < arr[j]){ 
-                    arr[i] = temp;
-            }
-        }
-        int temp = arr[i];
+       int newCur = 0;
+       int left = beg;
+       int right = mid + 1;
+       int[] tempArr = new int[end + 1];
 
+
+       
+       while (left <= mid && right <= end){
+           if (arr[left] < arr[right]){
+               tempArr[newCur] = arr[left];
+               newCur++;
+               left++;
+
+           }
+           else{
+               tempArr[newCur] = arr[right];
+               newCur++;
+               right++;
+               
+               
+           }
+       }
+       
+       while (left < mid){
+           tempArr[newCur] = arr[left];
+           newCur++;
+           left++;
+       }
+       
+       while (right < end){
+           tempArr[newCur] = arr[left];
+           newCur++;
+           right++;
+           
+       }
+       
+       //for (int i = 0; i <= end; i++){
+         //  tempArr
+       //}
+       
+       System.out.println(Arrays.toString(tempArr));
+    
+       
+       
+       
+       
     }
-    public void testBubbleSort ()
+    public void testBubbleSort()
     {
         int[] arrTest1 = {6,1,3,5,4,10,9};
         int[] arrTest2 = {1,2,6,7,7,7,3,4,9};
@@ -111,9 +146,10 @@ public class Sorting
     
     public void testMergeSort()
     {
-        int[] arrTest1 = {1,2,3,4,5,6,7,8};
+        int[] arrTest1 = {4,2,3,1};
         mergeSort(arrTest1);
-        System.out.println(Arrays.toString(arrTest1));
+        System.out.println(Arrays.toString((arrTest1)));
+        
     }
     
 }
