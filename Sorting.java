@@ -12,35 +12,28 @@ public class Sorting
     // instance variables - replace the example below with your own
     
 
-    /**
-     * Constructor for objects of class Sorting
-     */
     
-
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public void bubbleSort(int[] arr)
+    public static void bubbleSort(int[] arr)
     {
+        long swaps = 0;
+        long comparisons = 0;
         for (int i = 0; i < arr.length - 1; i++) {
             for (int j = 0; j < arr.length - 1; j++){
+                comparisons++;
                 if (arr[j] > arr[j + 1]){
                     int temp = arr[j];
                     arr[j] = arr[j + 1];
                     arr[j + 1] = temp;
-                    
+                    swaps++;
                 }
             }
         }
-     
+        System.out.print("," + comparisons + "," + swaps);
     }
-    public void insertionSort(int[] arr)
+    public static void insertionSort(int[] arr)
     {
-        int n = arr.length;
-        for (int i = 1; i < n; i++) {
+      
+        for (int i = 1; i < arr.length; i++) {
             int temp = arr[i];
             int j = i - 1;
             
@@ -53,29 +46,36 @@ public class Sorting
         }
     }
     
-    public void selectionSort(int[] arr)
+    public static void selectionSort(int[] arr)
     {
-         for (int i = 0; i < arr.length - 1; i++) {
-             int minLocation = i;
-            for (int j = i; j < arr.length - 1; j++){
-                if (arr [minLocation] < arr[j]) {
+        long comparisons = 0;
+        long swaps = 0;
+        for (int i = 0; i < arr.length - 1; i++) {
+            int minLocation = i;
+      
+            for (int j = i + 1; j < arr.length; j++){
+                comparisons++;
+                if (arr[j] < arr [minLocation]) {
                     minLocation = j;
+                    swaps++;
                 }
+         
+            }  
+            int temp = arr[minLocation];
+            arr[minLocation] = arr[i];
+            arr[i] = temp;
         }
-        int temp = arr[i];
-        arr[i] = arr[minLocation];
-        arr[minLocation] = temp;
+        System.out.print("," + comparisons + "," + swaps);
     }
-}
 
     
-    public void mergeSort(int[] arr)
+    public static void mergeSort(int[] arr)
     {
         mergeSort(0, arr.length-1, arr);
     }
 
     
-    public void mergeSort(int beg, int end, int[] arr)
+    public static void mergeSort(int beg, int end, int[] arr)
     {
         if (beg == end){
             return;
@@ -89,7 +89,7 @@ public class Sorting
         }
     }
     
-    public void merge(int beg, int mid, int end, int[] arr)
+    public static void merge(int beg, int mid, int end, int[] arr)
     {
        int newCur = 0;
        int left = beg;
