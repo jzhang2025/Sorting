@@ -37,6 +37,21 @@ public class Sorting
         }
      
     }
+    public void insertionSort(int[] arr)
+    {
+        int n = arr.length;
+        for (int i = 1; i < n; i++) {
+            int temp = arr[i];
+            int j = i - 1;
+            
+            while (j >= 0 && arr[j] > temp) {
+                arr[j + 1] = arr[j];
+                j--;
+            }
+            
+            arr[j + 1] = temp;
+        }
+    }
     
     public void selectionSort(int[] arr)
     {
@@ -79,7 +94,7 @@ public class Sorting
        int newCur = 0;
        int left = beg;
        int right = mid + 1;
-       int[] tempArr = new int[end + 1];
+       int[] tempArr = new int[end - beg + 1];
 
 
        
@@ -99,29 +114,24 @@ public class Sorting
            }
        }
        
-       while (left < mid){
+       while (left <= mid){
            tempArr[newCur] = arr[left];
            newCur++;
            left++;
        }
        
-       while (right < end){
-           tempArr[newCur] = arr[left];
+       while (right <= end){
+           tempArr[newCur] = arr[right];
            newCur++;
            right++;
            
        }
        
-       //for (int i = 0; i <= end; i++){
-         //  tempArr
-       //}
+       for (int i = 0; i < tempArr.length; i++) {
+        arr[beg + i] = tempArr[i];
+    }
        
-       System.out.println(Arrays.toString(tempArr));
-    
-       
-       
-       
-       
+   
     }
     public void testBubbleSort()
     {
@@ -137,19 +147,22 @@ public class Sorting
     public void testSelectionSort()
     {
         int[] arrTest1 = {6,1,3,5,4,10,9};
-        int[] arrTest2 = {1,2,6,7,7,7,3,4,9};
         selectionSort(arrTest1);
-        selectionSort(arrTest2);
         System.out.println(Arrays.toString(arrTest1));
-        System.out.println(Arrays.toString(arrTest2));
     }
     
     public void testMergeSort()
     {
-        int[] arrTest1 = {4,2,3,1};
+        int[] arrTest1 = {2,4,6,90,1,5,2};
         mergeSort(arrTest1);
         System.out.println(Arrays.toString((arrTest1)));
         
     }
     
+    public void testInsertionSort()
+    {
+        int[] arrTest1 = {2,4,5,1,10,5,9};
+        insertionSort(arrTest1);
+        System.out.println(Arrays.toString((arrTest1)));
+    }
 }
