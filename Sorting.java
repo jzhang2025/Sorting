@@ -72,10 +72,15 @@ public class Sorting
         System.out.print("," + comparisons + "," + swaps);
     }
 
-    
+    private static long comparisons;
+    private static long swaps; 
     public static void mergeSort(int[] arr)
     {
+        comparisons = 0; 
+        swaps = 0;  
         mergeSort(0, arr.length-1, arr);
+        
+        System.out.print("," + comparisons + "," + swaps);
     }
 
     
@@ -103,6 +108,7 @@ public class Sorting
 
        
        while (left <= mid && right <= end){
+           comparisons++;
            if (arr[left] < arr[right]){
                tempArr[newCur] = arr[left];
                newCur++;
@@ -133,8 +139,9 @@ public class Sorting
        
        for (int i = 0; i < tempArr.length; i++) {
         arr[beg + i] = tempArr[i];
+        swaps += 3;
     }
-       
+   
    
     }
     public void testBubbleSort()
