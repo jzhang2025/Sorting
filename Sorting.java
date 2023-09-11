@@ -32,18 +32,22 @@ public class Sorting
     }
     public static void insertionSort(int[] arr)
     {
-      
+        long swaps = 0;
+        long comparisons = 0;
         for (int i = 1; i < arr.length; i++) {
             int temp = arr[i];
             int j = i - 1;
             
             while (j >= 0 && arr[j] > temp) {
+                comparisons++;
                 arr[j + 1] = arr[j];
                 j--;
+                swaps++;
             }
             
             arr[j + 1] = temp;
         }
+        System.out.print("," + comparisons + "," + (swaps / 3));
     }
     
     public static void selectionSort(int[] arr)
