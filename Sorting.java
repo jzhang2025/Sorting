@@ -8,7 +8,7 @@ import java.util.*;
  */
 public class Sorting
 {      
-    private static long comparisons; // Countrs the amount of comparisons for merge sort
+    private static long comparisons; // Counts the amount of comparisons for merge sort
     private static long swaps; // Counts the amount of swaps for merge sort
     
     // Sorts a number array in ascending order using the bubble sort algorithm 
@@ -16,6 +16,7 @@ public class Sorting
     {
         long swaps = 0;
         long comparisons = 0;
+        boolean sorted = true;
         
         for (int i = 0; i < arr.length - 1; i++) {
             for (int j = 0; j < arr.length - 1; j++) {
@@ -25,7 +26,11 @@ public class Sorting
                     arr[j] = arr[j + 1];
                     arr[j + 1] = temp;
                     swaps++;
+                    sorted = false;
                 }
+            }
+            if (sorted == true) {
+                break;
             }
         }
         System.out.print("," + comparisons + "," + swaps);
