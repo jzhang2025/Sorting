@@ -1,7 +1,7 @@
 
 import java.util.*;
 /**
- * Sorting creates four different types of sorting algorithms. 
+ * Sorting creates four different types of sorting algorithms
  *
  * @author Joshua Zhang
  * @version 10/17/23
