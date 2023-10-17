@@ -35,7 +35,7 @@ public class Sorting
         }
         System.out.print("," + comparisons + "," + swaps);
     }
-   //testsetstsetsts
+    
     // Sorts a number array in ascending order using the insertion sort algorithm 
     public static void insertionSort(int[] arr)
     {
@@ -68,12 +68,15 @@ public class Sorting
                 comparisons++;
                 if (arr[j] < arr [minLocation]) {
                     minLocation = j;
-                    swaps++;
+                    
                 }
             }  
-            int temp = arr[minLocation];
-            arr[minLocation] = arr[i];
-            arr[i] = temp;
+            if (minLocation != i) {
+                int temp = arr[minLocation];
+                arr[minLocation] = arr[i];
+                arr[i] = temp;
+                swaps++;
+            }
         }
         System.out.print("," + comparisons + "," + swaps);
     }
@@ -88,19 +91,25 @@ public class Sorting
     }
     
     // Splits the number array in half continuously until in pairs of two and initiates merge method
-    public static void mergeSort(int beg, int end, int[] arr)
-    {
-        // base case
-        if (beg == end) {
+    public static void mergeSort(int beg, int end, int[] arr) {
+    if (beg < end) {
+        if (end - beg == 1) { 
+            comparisons++;
+            if (arr[beg] > arr[end]) {
+                int temp = arr[beg];
+                arr[beg] = arr[end];
+                arr[end] = temp;
+                swaps++;
+            }
             return;
-        // recursive case
-        } else {
-            int mid = (beg + end)/2;
-            mergeSort(beg, mid, arr);
-            mergeSort(mid + 1, end, arr);
-            merge(beg, mid, end, arr);
         }
+
+        int mid = beg + (end - beg) / 2;
+        mergeSort(beg, mid, arr);
+        mergeSort(mid + 1, end, arr);
+        merge(beg, mid, end, arr);
     }
+}
     
     // Sorts the numbers into ascending order and then merges them back into one single array
     public static void merge(int beg, int mid, int end, int[] arr)
