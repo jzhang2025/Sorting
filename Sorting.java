@@ -4,7 +4,7 @@ import java.util.*;
  * Sorting creates four different types of sorting algorithms. 
  *
  * @author Joshua Zhang
- * @version 9/13/23
+ * @version 10/17/23
  */
 public class Sorting
 {      
@@ -19,7 +19,7 @@ public class Sorting
         boolean sorted = true;
         
         for (int i = 0; i < arr.length - 1; i++) {
-            for (int j = 0; j < arr.length - 1; j++) {
+            for (int j = 0; j < arr.length - 1 - i; j++) {
                 comparisons++;
                 if (arr[j] > arr[j + 1]) {
                     int temp = arr[j];
